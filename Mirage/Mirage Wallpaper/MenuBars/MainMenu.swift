@@ -67,6 +67,8 @@ extension AppDelegate {
         let windowMenu = NSMenuItem()
         windowMenu.submenu = NSMenu(title: L("窗口"))
         windowMenu.submenu?.items = [
+            .init(title: L("最小化"), action: #selector(NSWindow.performMiniaturize(_:)), keyEquivalent: "m"),
+            .separator(),
             {
                 let item = NSMenuItem(title: L("壁纸库"), action: #selector(openMainWindow), keyEquivalent: "1")
                 item.keyEquivalentModifierMask = [.command, .shift]
@@ -93,6 +95,7 @@ extension AppDelegate {
         mainMenu.items = [appMenu, fileMenu, editMenu, viewMenu, windowMenu, helpMenu]
         appMenu.submenu?.items.first { $0.action == #selector(UpdateManager.checkForUpdates(_:)) }?.target = UpdateManager.shared
         NSApplication.shared.mainMenu = mainMenu
+        NSApplication.shared.windowsMenu = windowMenu.submenu
     }
 
     @objc func reloadWallpaper() {

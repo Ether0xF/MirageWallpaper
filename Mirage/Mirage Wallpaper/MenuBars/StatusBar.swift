@@ -124,7 +124,7 @@ extension AppDelegate: NSMenuDelegate, NSMenuItemValidation {
             .separator(),
 
             .init(title: L("静音"), systemImage: "speaker.slash.fill",
-                  action: #selector(mute), keyEquivalent: "m"),
+                  action: #selector(mute), keyEquivalent: ""),
 
             .init(title: L("暂停"), systemImage: "pause.fill",
                   action: #selector(pause), keyEquivalent: "p"),
